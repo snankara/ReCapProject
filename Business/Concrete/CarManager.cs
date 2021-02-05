@@ -21,7 +21,7 @@ namespace Business.Concrete
             if (entity.Description.Length >= 2 && entity.DailyPrice > 0)
             {
                 _carDal.Add(entity);
-                Console.WriteLine("Car Added : {0}", entity.Description);
+                Console.WriteLine("Car Added : {0}", entity.CarName);
             }
             else
             {
@@ -41,9 +41,9 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetById(int id)
+        public Car GetById(int id)
         {
-            return _carDal.GetAll(c=>c.Id == id);
+            return _carDal.GetById(c=>c.CarId == id);
         }
 
         public List<Car> GetCarsByBrandId(int id)
@@ -59,7 +59,7 @@ namespace Business.Concrete
         public void Update(Car entity)
         {
             _carDal.Update(entity);
-            Console.WriteLine("Car Updated : {0}", entity.Description);
+            Console.WriteLine("Car Updated : {0}", entity.CarName);
 
         }
     }

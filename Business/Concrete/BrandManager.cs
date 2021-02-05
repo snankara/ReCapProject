@@ -19,7 +19,7 @@ namespace Business.Concrete
         public void Add(Brand entity)
         {
             _brandDal.Add(entity);
-            Console.WriteLine("Brand Added : {0}",entity.Name);
+            Console.WriteLine("Brand Added : {0}",entity.BrandName);
         }
 
         public void Delete(Brand entity)
@@ -33,16 +33,16 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
-        public List<Brand> GetById(int id)
+        public Brand GetById(int id)
         {
-            return _brandDal.GetAll(b=>b.Id == id);
+            return _brandDal.GetById(b=>b.BrandId == id);
 
         }
 
         public void Update(Brand entity)
         {
             _brandDal.Update(entity);
-            Console.WriteLine("Brand Updated : {0}", entity.Name);
+            Console.WriteLine("Brand Updated : {0}", entity.BrandName);
         }
     }
 }

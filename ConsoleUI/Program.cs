@@ -15,100 +15,75 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             CarManager carManager = new CarManager(new EfCarDal());
 
-            Brand brand1 = new Brand { Id = 1, Name = "Mercedes" };
-            Brand brand2 = new Brand { Id = 2, Name = "Bmw" };
-            Brand brand3 = new Brand { Id = 3, Name = "Volkswagen" };
-            Brand brand4 = new Brand { Id = 4, Name = "FIAT" };
-            Brand brand5 = new Brand { Id = 5, Name = "Kia" };
-            Brand brand6 = new Brand { Id = 6, Name = "Nissan" };
-            Brand brand7 = new Brand { Id = 7, Name = "Volvo" };
-            Brand brand8 = new Brand { Id = 8, Name = "Seat" };
-
-            Color color1 = new Color { Id = 1, Name = "Black" };
-            Color color2 = new Color { Id = 2, Name = "WHITE" };
-            Color color3 = new Color { Id = 3, Name = "Red" };
-
-            Car car1 = new Car { Id = 1, BrandId = 2, ColorId = 2, DailyPrice = 1000, Description = "VOLKSWAGEN", ModelYear = "2018" };
-            Car car2 = new Car { Id = 2, BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "Bmw", ModelYear = "2016" };
-            Car car3 = new Car { Id = 3, BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" };
-
             // --- BRAND OPERATIONS --- 
-            //brandManager.Add(brand1);
-            //brandManager.Add(brand2);
-            //brandManager.Add(brand3);
-            //brandManager.Add(brand4);
-            //brandManager.Add(brand5);
-            //brandManager.Add(brand6);
-            //brandManager.Add(brand7);
-            //brandManager.Add(brand8);
 
-            //brandManager.Delete(brand8);
+            //brandManager.Add(new Brand { BrandName = "Mercedes" });
+            //brandManager.Add(new Brand { BrandName = "Bmw" });
+            //brandManager.Add(new Brand { BrandName = "Volkswagen" });
+            //brandManager.Add(new Brand { BrandName = "FIAT" });
+            //brandManager.Add(new Brand { BrandName = "Kia" });
+            //brandManager.Add(new Brand { BrandName = "Nissan" });
+            //brandManager.Add(new Brand { BrandName = "Volvo" });
+            //brandManager.Add(new Brand { BrandName = "Seat" });
 
-            //brandManager.Update(brand4);
+            //brandManager.Delete(new Brand { BrandId = 8, BrandName = "Seat" });
+
+            //brandManager.Update(new Brand {BrandId = 4, BrandName = "Fiat" });
 
             //foreach (var brand in brandManager.GetAll())
             //{
-            //    Console.WriteLine(brand.Name);
+            //    Console.WriteLine(brand.BrandName);
             //}
 
-            //foreach (var brand in brandManager.GetById(7))
-            //{
-            //    Console.WriteLine(brand.Name);
-            //}
+            //Console.WriteLine(brandManager.GetById(7).BrandName);
+
             // --- BRAND OPERATIONS --- 
 
 
             // --- COLOR OPERATIONS ---
 
-            //colorManager.Add(color1);
-            //colorManager.Add(color2);
-            //colorManager.Add(color3);
+            //colorManager.Add(new Color { ColorName = "Black" });
+            //colorManager.Add(new Color { ColorName = "WHITE" });
+            //colorManager.Add(new Color { ColorName = "Red" });
 
-            //colorManager.Delete(color3);
+            //colorManager.Delete(new Color { ColorId = 3, ColorName = "Red" });
 
-            //colorManager.Update(color2);
+            //colorManager.Update(new Color {ColorId = 2, ColorName = "White" });
 
             //foreach (var color in colorManager.GetAll())
             //{
-            //    Console.WriteLine(color.Name);
+            //    Console.WriteLine(color.ColorName);
             //}
 
-            //foreach (var color in colorManager.GetById(1))
-            //{
-            //    Console.WriteLine(color.Name);
-            //}
-
+            //Console.WriteLine(colorManager.GetById(1).ColorName);
             // --- COLOR OPERATIONS ---
 
 
             //CAR OPERATIONS
 
-            //carManager.Add(car1);
-            //carManager.Add(car2);
-            //carManager.Add(car3);
+            //carManager.Add(new Car { CarName = "Volkswagen", BrandId = 2, ColorId = 2, DailyPrice = 1000, Description = "VOLKSWAGEN", ModelYear = "2018" });
+            //carManager.Add(new Car { CarName = "Bmw", BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "Bmw", ModelYear = "2016" });
+            //carManager.Add(new Car { CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
 
-            //carManager.Delete(car3);
+            //carManager.Delete(new Car { CarId = 3, CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
 
-            ////carManager.Update(car1);
+            //carManager.Update(new Car {CarId = 1, CarName = "Volkswagen", BrandId = 3, ColorId = 2, DailyPrice = 1000, Description = "VOLKSWAGEN", ModelYear = "2018" });
 
-            //foreach (var car in carManager.GetById(1))
+            //Console.WriteLine(carManager.GetById(1).CarName);
+
+            //foreach (var car in carManager.GetAll())
             //{
-            //    Console.WriteLine(car.Description + "-" + car.ModelYear + "-" + car.DailyPrice);
+            //    Console.WriteLine(car.CarName + "-" + car.ModelYear + "-" + car.DailyPrice);
             //}
 
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description + "-" + car.ModelYear + "-" + car.DailyPrice);
-            }
-
-            //foreach (var car in carManager.GetCarsByBrandId(7))
+            //foreach (var car in carManager.GetCarsByBrandId(2))
             //{
-            //    Console.WriteLine(car.Description);
+            //    Console.WriteLine(car.CarName);
             //}
 
-            //foreach (var car in carManager.GetCarsByColorId(1))
+            //foreach (var car in carManager.GetCarsByColorId(2))
             //{
-            //    Console.WriteLine(car.Description);
+            //    Console.WriteLine(car.CarName);
             //}
 
             //CAR OPERATIONS

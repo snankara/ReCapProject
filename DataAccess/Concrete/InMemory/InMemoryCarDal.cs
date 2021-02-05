@@ -15,10 +15,10 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryCarDal()
         {
             _cars = new List<Car> { 
-                new Car{Id = 1, BrandId = 1, ColorId = 1, ModelYear = "2015", DailyPrice = 500, Description = "Car1"},
-                new Car{Id = 2, BrandId = 1, ColorId = 2, ModelYear = "2018", DailyPrice = 800, Description = "Car2"},
-                new Car{Id = 3, BrandId = 2, ColorId = 3, ModelYear = "2019", DailyPrice = 1000, Description = "Car3"},
-                new Car{Id = 4, BrandId = 2, ColorId = 3, ModelYear = "2018", DailyPrice = 900, Description = "Car4"}
+                new Car{CarId = 1, BrandId = 1, ColorId = 1, ModelYear = "2015", DailyPrice = 500, Description = "Car1"},
+                new Car{CarId = 2, BrandId = 1, ColorId = 2, ModelYear = "2018", DailyPrice = 800, Description = "Car2"},
+                new Car{CarId = 3, BrandId = 2, ColorId = 3, ModelYear = "2019", DailyPrice = 1000, Description = "Car3"},
+                new Car{CarId = 4, BrandId = 2, ColorId = 3, ModelYear = "2018", DailyPrice = 900, Description = "Car4"}
             };
         }
 
@@ -30,13 +30,13 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c=>c.Id == car.Id);
+            Car carToDelete = _cars.SingleOrDefault(c=>c.CarId == car.CarId);
             _cars.Remove(carToDelete);
         }
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
