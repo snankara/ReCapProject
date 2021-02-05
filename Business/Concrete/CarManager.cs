@@ -16,16 +16,24 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public void Add(Car entity)
         {
-            _carDal.Add(car);
-            Console.WriteLine("Added : {0} !",car.Description);
+            if (entity.Description.Length >= 2 && entity.DailyPrice > 0)
+            {
+                _carDal.Add(entity);
+                Console.WriteLine("Car Added : {0}", entity.Description);
+            }
+            else
+            {
+                Console.WriteLine("INVALID");
+            }
         }
 
-        public void Delete(Car car)
+        public void Delete(Car entity)
         {
-            _carDal.Delete(car);
-            Console.WriteLine("Deleted : {0} !", car.Description);
+            _carDal.Delete(entity);
+            Console.WriteLine("Car Deleted");
+
         }
 
         public List<Car> GetAll()
@@ -33,16 +41,25 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetById(int brandId)
+        public List<Car> GetById(int id)
         {
-            return _carDal.GetById(brandId);
-            
+            return _carDal.GetAll(c=>c.Id == id);
         }
 
-        public void Update(Car car)
+        public List<Car> GetCarsByBrandId(int id)
         {
-            _carDal.Update(car);
-            Console.WriteLine("Updated : {0} !", car.Description);
+            return _carDal.GetAll(c=>c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+        }
+
+        public void Update(Car entity)
+        {
+            _carDal.Update(entity);
+            Console.WriteLine("Car Updated : {0}", entity.Description);
 
         }
     }
