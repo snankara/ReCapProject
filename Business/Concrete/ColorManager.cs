@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Business;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,7 +20,7 @@ namespace Business.Concrete
         public void Add(Color entity)
         {
             _colorDal.Add(entity);
-            Console.WriteLine("Color Added : {0}",entity.ColorName);
+            Console.WriteLine("Color Added : {0}", entity.ColorName);
         }
 
         public void Delete(Color entity)
@@ -31,19 +32,19 @@ namespace Business.Concrete
         public List<Color> GetAll()
         {
             return _colorDal.GetAll();
-            
         }
 
         public Color GetById(int id)
         {
             return _colorDal.GetById(c => c.ColorId == id);
+
         }
 
         public void Update(Color entity)
         {
             _colorDal.Update(entity);
             Console.WriteLine("Color Updated : {0}", entity.ColorName);
-
         }
+
     }
 }

@@ -56,6 +56,7 @@ namespace ConsoleUI
             //}
 
             //Console.WriteLine(colorManager.GetById(1).ColorName);
+
             // --- COLOR OPERATIONS ---
 
 
@@ -86,6 +87,10 @@ namespace ConsoleUI
             //    Console.WriteLine(car.CarName);
             //}
 
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
+            }
             //CAR OPERATIONS
 
         }
