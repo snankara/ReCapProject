@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class CarsController : ControllerBase, ICarsController
     {
         ICarService _carService;
 
@@ -81,9 +82,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Car entity)
         {
-            var result = _carService.Add(car);
+            var result = _carService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -93,9 +94,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Car entity)
         {
-            var result = _carService.Delete(car);
+            var result = _carService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -105,9 +106,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Car entity)
         {
-            var result = _carService.Update(car);
+            var result = _carService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);

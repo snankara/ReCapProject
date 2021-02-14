@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsController : ControllerBase
+    public class BrandsController : ControllerBase, IBrandsController
     {
         IBrandService _brandService;
 
@@ -45,9 +46,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Brand brand)
+        public IActionResult Add(Brand entity)
         {
-            var result = _brandService.Add(brand);
+            var result = _brandService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +58,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Brand brand)
+        public IActionResult Delete(Brand entity)
         {
-            var result = _brandService.Delete(brand);
+            var result = _brandService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,9 +70,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Brand brand)
+        public IActionResult Update(Brand entity)
         {
-            var result = _brandService.Update(brand);
+            var result = _brandService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);

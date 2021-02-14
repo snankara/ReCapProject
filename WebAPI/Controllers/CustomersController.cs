@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class CustomersController : ControllerBase, ICustomersController
     {
         ICustomerService _customerService;
 
@@ -45,9 +46,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Customer customer)
+        public IActionResult Add(Customer entity)
         {
-            var result = _customerService.Add(customer);
+            var result = _customerService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +58,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Customer customer)
+        public IActionResult Delete(Customer entity)
         {
-            var result = _customerService.Delete(customer);
+            var result = _customerService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,9 +70,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Customer customer)
+        public IActionResult Update(Customer entity)
         {
-            var result = _customerService.Update(customer);
+            var result = _customerService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);

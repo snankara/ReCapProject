@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorsController : ControllerBase
+    public class ColorsController : ControllerBase, IColorsController
     {
         IColorService _colorService;
 
@@ -45,9 +46,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Color color)
+        public IActionResult Add(Color entity)
         {
-            var result = _colorService.Add(color);
+            var result = _colorService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +58,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Color color)
+        public IActionResult Delete(Color entity)
         {
-            var result = _colorService.Delete(color);
+            var result = _colorService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,9 +70,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Color color)
+        public IActionResult Update(Color entity)
         {
-            var result = _colorService.Update(color);
+            var result = _colorService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);

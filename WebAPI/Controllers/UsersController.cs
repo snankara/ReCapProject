@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.WebAPI;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : ControllerBase, IUsersController
     {
         IUserService _userService;
 
@@ -45,9 +47,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(User entity)
         {
-            var result = _userService.Add(user);
+            var result = _userService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +59,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(User entity)
         {
-            var result = _userService.Delete(user);
+            var result = _userService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,9 +71,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(User entity)
         {
-            var result = _userService.Update(user);
+            var result = _userService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);

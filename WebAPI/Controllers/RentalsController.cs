@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.WebAPI;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Abstract;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RentalsController : ControllerBase
+    public class RentalsController : ControllerBase, IRentalsController
     {
         IRentalService _rentalService;
 
@@ -45,9 +47,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Rental rental)
+        public IActionResult Add(Rental entity)
         {
-            var result = _rentalService.Add(rental);
+            var result = _rentalService.Add(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +59,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Rental rental)
+        public IActionResult Delete(Rental entity)
         {
-            var result = _rentalService.Delete(rental);
+            var result = _rentalService.Delete(entity);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,9 +71,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Rental rental)
+        public IActionResult Update(Rental entity)
         {
-            var result = _rentalService.Update(rental);
+            var result = _rentalService.Update(entity);
             if (result.Success)
             {
                 return Ok(result);
