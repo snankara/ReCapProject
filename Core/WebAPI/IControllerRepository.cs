@@ -13,6 +13,5 @@ namespace Core.WebAPI
         IActionResult Add(TEntity entity);
         IActionResult Update(TEntity entity);
         IActionResult Delete(TEntity entity);
-
     }
 }
