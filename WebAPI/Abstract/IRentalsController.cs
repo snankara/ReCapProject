@@ -1,5 +1,6 @@
 ﻿using Core.WebAPI;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace WebAPI.Abstract
 {
     public interface IRentalsController : IControllerRepository<Rental>
     {
+        IActionResult GetRentalDetails();
     }
 }
