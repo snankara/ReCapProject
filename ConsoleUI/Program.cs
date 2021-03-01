@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
@@ -24,6 +25,9 @@ namespace ConsoleUI
 
             //RentalTests();
 
+            //CarImageManager carImageManager = new CarImageManager(new EfCarImageDal());
+            //CarImage image1 = new CarImage { CarId = 1, ImagePath = "‪C:/Users/SNAN/Desktop/share-icon-2.png", Date = DateTime.Now };
+            //carImageManager.Add(image1);
         }
 
         private static void RentalTests()
@@ -62,7 +66,7 @@ namespace ConsoleUI
         private static void UserTests()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            Console.WriteLine(userManager.Add(new User { FirstName = "Mehmet", LastName = "Sayar", Email = "example@outlook.com", Password = "abcde12" }).Message);
+            //Console.WriteLine(userManager.Add(new User { FirstName = "Mehmet", LastName = "Sayar", Email = "example@outlook.com", Password = "abcde12" }).Message);
 
             foreach (var user in userManager.GetAll().Data)
             {

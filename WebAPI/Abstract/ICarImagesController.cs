@@ -1,5 +1,4 @@
-﻿using Core.Entities.Concrete;
-using Core.WebAPI;
+﻿using Core.WebAPI;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Abstract
 {
-    public interface IUsersController : IControllerRepository<User>
+    interface ICarImagesController : IControllerRepository<CarImage>
     {
     }
 }
