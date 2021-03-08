@@ -6,6 +6,8 @@ using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 
 namespace Business.Concrete
 {
@@ -31,6 +33,8 @@ namespace Business.Concrete
 
         }
 
+        [CacheAspect]
+        [PerformanceAspect(3)]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.Listed);
