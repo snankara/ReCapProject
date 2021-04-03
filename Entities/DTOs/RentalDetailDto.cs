@@ -7,6 +7,8 @@ namespace Entities.DTOs
 {
     public class RentalDetailDto : IDto
     {
+        public int CarId { get; set; }
+        public int CustomerId { get; set; }
         public string CarName { get; set; } 
         public string FirstName { get; set; } //user table
         public string LastName { get; set; } //user table

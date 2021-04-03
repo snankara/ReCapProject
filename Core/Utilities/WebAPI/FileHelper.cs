@@ -13,15 +13,17 @@ namespace Core.Utilities.WebAPI
             var sourcePath = Path.GetTempFileName();
             if (file != null)
             {
+
                 using (var stream = new FileStream(sourcePath, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
 
                 var destinationPath = newPath(file);
+
                 File.Move(sourcePath, destinationPath);
 
-                return destinationPath;
+                return destinationPath.Replace(Directory.GetCurrentDirectory() + @"/wwwroot","");
             }
 
             var defaultImage = defaultPath().ToString();
@@ -31,7 +33,7 @@ namespace Core.Utilities.WebAPI
 
         private static object defaultPath()
         {
-            string path = Path.Combine(Environment.CurrentDirectory + @"/wwwroot/Images/default.jpg");
+            string path = Path.Combine("/Images/default.jpg");
             return path;
         }
 
@@ -73,8 +75,8 @@ namespace Core.Utilities.WebAPI
             FileInfo fileName = new FileInfo(file.FileName);
             var fileExtension = fileName.Extension;
             var uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
-            string path = Path.Combine(Environment.CurrentDirectory + @"/wwwroot/Images");
-            string result = $@"{path}\{uniqueFileName}";
+            string path = Directory.GetCurrentDirectory() + @"/wwwroot/Images/";
+            string result = path + uniqueFileName;
 
             return result;
         }

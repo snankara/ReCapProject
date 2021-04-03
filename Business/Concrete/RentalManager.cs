@@ -9,6 +9,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -25,18 +26,15 @@ namespace Business.Concrete
 
         [CacheRemoveAspect("IRentalService.Get")]
         [ValidationAspect(typeof(RentalValidator))]
-        public IResult Add(Rental entity)
+        public IResult Add(Rental rental)
         {
-            var results = _rentalDal.GetAll(r => r.CarId == entity.CarId);
-            foreach (var result in results)
+            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now)).Any();
+            if (result)
             {
-                if (result.ReturnDate == null)
-                {
-                    return new ErrorResult(Messages.Exception);
-                }
+                return new ErrorResult(Messages.Exception);
             }
 
-            _rentalDal.Add(entity);
+            _rentalDal.Add(rental);
             return new SuccessResult(Messages.Added);
         }
 
@@ -56,6 +54,11 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.Id == id), Messages.Listed);
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalByCarId(int carId)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.CarId == carId), Messages.Listed);
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()

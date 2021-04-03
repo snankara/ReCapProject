@@ -11,5 +11,7 @@ namespace Business.Abstract
     public interface IRentalService : IServiceRepository<Rental>
     {
         IDataResult<List<RentalDetailDto>> GetRentalDetails();
+        IDataResult<List<RentalDetailDto>> GetRentalByCarId(int carId);
+
     }
 }

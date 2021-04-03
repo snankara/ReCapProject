@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,7 +16,7 @@ namespace WebAPI.Controllers
     public class RentalsController : ControllerBase
     {
         IRentalService _rentalService;
-
+        IPaymentService _paymentService;
         public RentalsController(IRentalService rentalService)
         {
             _rentalService = rentalService;
@@ -37,6 +38,18 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _rentalService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpGet("getrentalbycarid")]
+        public IActionResult GetRentalByCarId(int carId)
+        {
+            var result = _rentalService.GetRentalByCarId(carId);
             if (result.Success)
             {
                 return Ok(result);
@@ -80,7 +93,25 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+        
+        [HttpPost("paymentadd")]
+        public IActionResult PaymentAdd(RentalPaymentDto rentalPaymentDto)
+        {
+            var paymentResult = _paymentService.ReceivePayment(rentalPaymentDto.Payment);
+            if (!paymentResult.Success)
+            {
+                return BadRequest(paymentResult);
+            }
 
+            var result = _rentalService.Add(rentalPaymentDto.Rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+
+        }
         [HttpGet("getrentaldetails")]
         public IActionResult GetRentalDetails()
         {

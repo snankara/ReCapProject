@@ -8,11 +8,18 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICarService: IServiceRepository<Car>
+    public interface ICarService
     {
-        IDataResult<List<Car>> GetCarsByBrandId(int id);
-        IDataResult<List<Car>> GetCarsByColorId(int id);
+        IDataResult<List<CarDetailDto>> GetCarsByBrandId(int id);
+        IDataResult<List<CarDetailDto>> GetByBrandIdAndColorId(int brandId, int colorId);
+        IDataResult<List<CarDetailDto>> GetCarsByColorId(int id);
         IDataResult<List<CarDetailDto>> GetCarDetails();
+        IDataResult <CarDetailAndImageDto> CarDetailAndImage(int carId);
+        IDataResult<List<Car>> GetAll();
+        IDataResult<List<CarDetailDto>> GetById(int id);
+        IResult Add(Car entity);
+        IResult Delete(Car entity);
+        IResult Update(Car entity);
 
     }
 }

@@ -23,5 +23,9 @@ namespace Business.Constants
         public static string UserNotFound = "Kullanıcı bulunamadı.";
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut.";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu.";
+
+        public static string PaymentCompleted = "Ödemenizi Aldık!";
+
+        public static string InsufficientBalance = "Banka Ödemenizi Onaylamadı!";
     }
 }

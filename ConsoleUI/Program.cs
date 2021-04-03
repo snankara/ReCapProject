@@ -80,42 +80,42 @@ namespace ConsoleUI
 
         private static void CarTests()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+        //    //CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(new Car { CarName = "Volkswagen", BrandId = 2, ColorId = 2, DailyPrice = 1000, Description = "VOLKSWAGEN", ModelYear = "2018" });
-            carManager.Add(new Car { CarName = "Bmw", BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "Bmw", ModelYear = "2016" });
-            carManager.Add(new Car { CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
+        //    carManager.Add(new Car { CarName = "Volkswagen", BrandId = 2, ColorId = 2, DailyPrice = 1000, Description = "VOLKSWAGEN", ModelYear = "2018" });
+        //    carManager.Add(new Car { CarName = "Bmw", BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "Bmw", ModelYear = "2016" });
+        //    carManager.Add(new Car { CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
 
-            carManager.Delete(new Car { CarId = 3, CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
+        //    carManager.Delete(new Car { CarId = 3, CarName = "Volvo", BrandId = 7, ColorId = 1, DailyPrice = 900, Description = "Volvo", ModelYear = "2017" });
 
-            carManager.Update(new Car { CarId = 2, CarName = "Bmw", BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "", ModelYear = "2016" });
+        //    carManager.Update(new Car { CarId = 2, CarName = "Bmw", BrandId = 2, ColorId = 1, DailyPrice = 1400, Description = "", ModelYear = "2016" });
 
-            Console.WriteLine(carManager.GetById(1));
+        //    Console.WriteLine(carManager.GetById(1));
 
-            foreach (var car in carManager.GetAll().Data)
-            {
-                Console.WriteLine(car.CarName + "-" + car.ModelYear + "-" + car.DailyPrice);
-            }
+        //    foreach (var car in carManager.GetAll().Data)
+        //    {
+        //        Console.WriteLine(car.CarName + "-" + car.ModelYear + "-" + car.DailyPrice);
+        //    }
 
-            foreach (var car in carManager.GetCarsByBrandId(2).Data)
-            {
-                Console.WriteLine(car.CarName);
-            }
+        //    foreach (var car in carManager.GetCarsByBrandId(2).Data)
+        //    {
+        //        Console.WriteLine(car.CarName);
+        //    }
 
-            foreach (var car in carManager.GetCarsByColorId(2).Data)
-            {
-                Console.WriteLine(car.CarName);
-            }
+        //    foreach (var car in carManager.GetCarsByColorId(2).Data)
+        //    {
+        //        Console.WriteLine(car.CarName);
+        //    }
 
 
-            var result = carManager.GetCarDetails();
-            if (result.Success)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
-                }
-            }
+        //    var result = carManager.GetCarDetails();
+        //    if (result.Success)
+        //    {
+        //        foreach (var car in result.Data)
+        //        {
+        //            Console.WriteLine(car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
+        //        }
+        //    }
         }
 
         private static void ColorTests()
