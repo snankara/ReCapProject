@@ -28,6 +28,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  DailyPrice = car.DailyPrice, 
                                  Description = car.Description,
                                  CarId = car.CarId,
+                                 ModelYear = car.ModelYear,
+                                 BrandId = brand.BrandId,
+                                 ColorId = color.ColorId,
                                  Status = !carRentalContext.Rentals.Any(r => r.CarId == car.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now))
                              };
 

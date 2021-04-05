@@ -26,7 +26,7 @@ namespace Business.Concrete
             _carImageService = carImageService;
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
@@ -53,7 +53,7 @@ namespace Business.Concrete
             return new SuccessDataResult<CarDetailAndImageDto>(carDetailAndImageDto, Messages.Listed);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car entity)
         {
@@ -96,7 +96,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == id),Messages.Listed);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car entity)
         {
