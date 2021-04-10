@@ -40,6 +40,11 @@ namespace Business.Concrete
             return new SuccessDataResult<CreditCard>(_creditCardDal.GetById(c => c.CardNumber == cardNumber),Messages.Listed);
         }
 
+        public IDataResult<CreditCard> GetById(int cardId)
+        {
+            return new SuccessDataResult<CreditCard>(_creditCardDal.GetById(c => c.CardId == cardId), Messages.Listed);
+        }
+
         public IResult Update(CreditCard creditCard)
         {
             _creditCardDal.Update(creditCard);

@@ -20,14 +20,39 @@ namespace DataAccess.Concrete.EntityFramework
                              join user in carRentalContext.Users on customer.UserId equals user.Id
                              select new CustomerDetailDto
                              {
-                                 CustomerId = customer.UserId,
+                                 CustomerId = customer.CustomerId,
+                                 UserId= user.Id,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
+                                 Email = user.Email,
+                                 CompanyName = customer.CompanyName,
+                                 FindeksScore = customer.FindeksScore
+                             };
+                return result.ToList();
+
+            }
+        }
+
+
+        public CustomerDetailDto GetCustomerByEmail(Expression<Func<CustomerDetailDto, bool>> filter)
+        {
+            using (CarRentalContext carRentalContext = new CarRentalContext())
+            {
+                var result = from customer in  carRentalContext.Customers
+                             join user in carRentalContext.Users on customer.UserId equals user.Id
+                             join creditCard in carRentalContext.CreditCards on customer.CardId equals creditCard.CardId
+                             select new CustomerDetailDto
+                             {
+                                 CustomerId = customer.CustomerId,
                                  UserId = user.Id,
                                  FirstName = user.FirstName,
                                  LastName = user.LastName,
                                  Email = user.Email,
-                                 CompanyName = customer.CompanyName
+                                 CompanyName = customer.CompanyName,
+                                 FindeksScore = customer.FindeksScore,
+                                 CardId = creditCard.CardId
                              };
-                return result.ToList();
+                return result.SingleOrDefault(filter);
 
             }
         }

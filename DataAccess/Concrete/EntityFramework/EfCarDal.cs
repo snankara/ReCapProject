@@ -31,6 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = car.ModelYear,
                                  BrandId = brand.BrandId,
                                  ColorId = color.ColorId,
+                                 MinFindeksScore = car.MinFindeksScore,
                                  Status = !carRentalContext.Rentals.Any(r => r.CarId == car.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now))
                              };
 

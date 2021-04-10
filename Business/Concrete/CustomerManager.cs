@@ -38,12 +38,27 @@ namespace Business.Concrete
 
         public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.GetById(c=>c.UserId == id), Messages.Listed);
+            return new SuccessDataResult<Customer>(_customerDal.GetById(c=>c.CustomerId == id), Messages.Listed);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerByUserId(int userId)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c=>c.UserId == userId), Messages.Listed);
+        }
+
+        public IDataResult<CustomerDetailDto> GetCustomerByEmail(string email)
+        {
+            return new SuccessDataResult<CustomerDetailDto>(_customerDal.GetCustomerByEmail(c => c.Email == email), Messages.Listed);
         }
 
         public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
         {
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.Listed);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailsById(int id)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c=>c.CustomerId == id), Messages.Listed);
         }
 
         public IResult Update(Customer entity)

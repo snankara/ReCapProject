@@ -45,6 +45,30 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcustomerbyuserid")]
+        public IActionResult GetCustomerByUserId(int userId)
+        {
+            var result = _customerService.GetCustomerByUserId(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpGet("getcustomerbyemail")]
+        public IActionResult GetCustomerByEmail(string email)
+        {
+            var result = _customerService.GetCustomerByEmail(email);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
         [HttpGet("getcustomerdetails")]
         public IActionResult GetCustomerDetails()
         {
@@ -56,6 +80,19 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("getcustomerdetailsbyid")]
+        public IActionResult GetCustomerDetails(int id)
+        {
+            var result = _customerService.GetCustomerDetailsById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
 
         [HttpPost("add")]
         public IActionResult Add(Customer entity)
@@ -81,7 +118,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public IActionResult Update(Customer entity)
         {
             var result = _customerService.Update(entity);

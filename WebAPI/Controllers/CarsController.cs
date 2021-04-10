@@ -44,6 +44,8 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+
         [HttpGet("getbybrandidandcolorid")]
         public IActionResult GetByBrandIdAndColorId(int brandId, int colorId)
         {

@@ -11,6 +11,7 @@ namespace Business.Abstract
         IResult VerifyCard(CreditCard creditCard);
         IDataResult<List<CreditCard>> GetAll();
         IDataResult<CreditCard> GetByCardNumber(string cardNumber);
+        IDataResult<CreditCard> GetById(int cardId);
         IResult Add(CreditCard creditCard);
         IResult Update(CreditCard creditCard);
         IResult Delete(CreditCard creditCard);

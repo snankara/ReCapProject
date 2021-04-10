@@ -26,7 +26,7 @@ namespace Business.Concrete
             _carImageService = carImageService;
         }
 
-        //[SecuredOperation("admin")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
