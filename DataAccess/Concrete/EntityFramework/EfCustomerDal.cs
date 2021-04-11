@@ -26,7 +26,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  LastName = user.LastName,
                                  Email = user.Email,
                                  CompanyName = customer.CompanyName,
-                                 FindeksScore = customer.FindeksScore
+                                 FindeksScore = customer.FindeksScore,
+                                 CardId = customer.CardId
                              };
                 return result.ToList();
 
@@ -50,7 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Email = user.Email,
                                  CompanyName = customer.CompanyName,
                                  FindeksScore = customer.FindeksScore,
-                                 CardId = creditCard.CardId
+                                 CardId = customer.CardId
                              };
                 return result.SingleOrDefault(filter);
 
