@@ -24,14 +24,13 @@ This project is a car rental project developed in accordance with SOLID principl
 
 ## Images
 
-### Hierarchy
+### Project Hierarchy
 
 ![Hierarchy](https://github.com/snankara/ReCapProject/blob/master/ImagesForGitHub/Hierarchy.JPG)
 
-### Hierarchy
+### Project Database
 
 ![Database](https://github.com/snankara/ReCapProject/blob/master/ImagesForGitHub/CarRental-Database.JPG)
-
 
 
 ## Contact
