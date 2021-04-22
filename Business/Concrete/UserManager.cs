@@ -23,6 +23,7 @@ namespace Business.Concrete
         public IResult Add(User entity)
         {
             _userDal.Add(entity);
+
             return new SuccessResult(Messages.Added);
         }
 

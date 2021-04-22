@@ -35,22 +35,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
-        public IDataResult <CarDetailAndImageDto> CarDetailAndImage(int carId)
+        public IDataResult<List<CarDetailAndImageDto>> GetCarAndImageDetails()
         {
-            var result = _carDal.GetCarDetails(c => c.CarId == carId);
-            var imageResult = _carImageService.GetAllByCarId(carId);
-            if (result == null || !imageResult.Success)
-            {
-                return new ErrorDataResult<CarDetailAndImageDto>();
-            }
 
-            var carDetailAndImageDto = new CarDetailAndImageDto
-            {
-                Car = result,
-                CarImages = imageResult.Data
-            };
+            return new SuccessDataResult<List<CarDetailAndImageDto>>(_carDal.GetCarAndImageDetails(), Messages.Listed);
+        }
 
-            return new SuccessDataResult<CarDetailAndImageDto>(carDetailAndImageDto, Messages.Listed);
+        public IDataResult<List<CarDetailAndImageDto>> GetCarAndImageDetailsByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailAndImageDto>>(_carDal.GetCarAndImageDetails(c => c.CarId == carId), Messages.Listed);
+        }
+
+        public IDataResult<List<CarDetailAndImageDto>> GetCarAndImageDetailsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailAndImageDto>>(_carDal.GetCarAndImageDetails(c => c.BrandId == brandId), Messages.Listed);
         }
 
         //[SecuredOperation("admin")]
