@@ -10,10 +10,12 @@ namespace Entities.DTOs
         public int CarId { get; set; }
         public int CustomerId { get; set; }
         public string CarName { get; set; } 
-        public string FirstName { get; set; } //user table
-        public string LastName { get; set; } //user table
+        public string FirstName { get; set; } 
+        public string LastName { get; set; } 
         public decimal DailyPrice { get; set; } 
-        public DateTime RentDate { get; set; } //rental table
-        public DateTime? ReturnDate { get; set; } //rental table
+        public DateTime RentDate { get; set; } 
+        public DateTime? ReturnDate { get; set; } 
+        public List<string> ImagePath { get; set; }
+
     }
 }

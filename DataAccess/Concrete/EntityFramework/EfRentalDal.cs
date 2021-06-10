@@ -23,7 +23,10 @@ namespace DataAccess.Concrete.EntityFramework
                              select new RentalDetailDto { CarName = car.CarName, FirstName = user.FirstName, 
                                  LastName = user.LastName,DailyPrice = car.DailyPrice, 
                                  RentDate = rental.RentDate, ReturnDate = rental.ReturnDate,
-                                 CarId =car.CarId, CustomerId = customer.UserId};
+                                 CarId =car.CarId, CustomerId = customer.UserId,
+                                 ImagePath = (from carImage in carRentalContext.CarImages where carImage.CarId == car.CarId select carImage.ImagePath).ToList(),
+
+                             };
                 return result.ToList();
             }
         }

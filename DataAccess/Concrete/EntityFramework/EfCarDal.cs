@@ -63,7 +63,6 @@ namespace DataAccess.Concrete.EntityFramework
                                  MinFindeksScore = car.MinFindeksScore,
                                  Status = !carRentalContext.Rentals.Any(r => r.CarId == car.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now)),
                                  ImagePath = (from carImage in carRentalContext.CarImages where carImage.CarId == car.CarId select carImage.ImagePath).ToList(),
-                                 //ImageDate = (from carImage in carRentalContext.CarImages where carImage.CarId == car.CarId select carImage.Date).ToList()
 
                              };
 

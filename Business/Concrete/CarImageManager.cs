@@ -32,7 +32,7 @@ namespace Business.Concrete
                 return result;
             }
 
-            entity.ImagePath = FileHelper.AddAsync(file);
+            entity.ImagePath = CarFileHelper.AddAsync(file);
             entity.Date = DateTime.Now;
             _carImageDal.Add(entity);
 
@@ -41,7 +41,7 @@ namespace Business.Concrete
 
         public IResult Delete(CarImage entity)
         {
-            entity.ImagePath = FileHelper.DeleteAsync(_carImageDal.GetById(e => e.Id == entity.Id).ImagePath);
+            entity.ImagePath = CarFileHelper.DeleteAsync(_carImageDal.GetById(e => e.Id == entity.Id).ImagePath);
             if (entity.ImagePath == null)
             {
                 _carImageDal.Delete(entity);
@@ -68,7 +68,7 @@ namespace Business.Concrete
 
         public IResult Update(IFormFile file,CarImage entity)
         {
-            entity.ImagePath = FileHelper.UpdateAsync(_carImageDal.GetById(e => e.Id == entity.Id).ImagePath, file);
+            entity.ImagePath = CarFileHelper.UpdateAsync(_carImageDal.GetById(e => e.Id == entity.Id).ImagePath, file);
             entity.Date = DateTime.Now;
             _carImageDal.Update(entity);
 

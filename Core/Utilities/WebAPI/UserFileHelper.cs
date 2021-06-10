@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.Utilities.WebAPI
 {
-    public class FileHelper
+    public class UserFileHelper
     {
         public static string AddAsync(IFormFile file)
         {
@@ -23,7 +23,7 @@ namespace Core.Utilities.WebAPI
 
                 File.Move(sourcePath, destinationPath);
 
-                return destinationPath.Replace(Directory.GetCurrentDirectory() + @"/wwwroot","");
+                return destinationPath.Replace(Directory.GetCurrentDirectory() + @"/wwwroot", "");
             }
 
             var defaultImage = defaultPath().ToString();
@@ -31,9 +31,10 @@ namespace Core.Utilities.WebAPI
             return defaultImage;
         }
 
+
         private static object defaultPath()
         {
-            string path = Path.Combine("/Images/default.jpg");
+            string path = Path.Combine("/Images/UserImages/user-profile-default.png");
             return path;
         }
 
@@ -54,10 +55,10 @@ namespace Core.Utilities.WebAPI
                     file.CopyTo(stream);
                 }
 
-                File.Delete(sourcePath);
+                File.Delete(Directory.GetCurrentDirectory() + @"/wwwroot" + sourcePath);
             }
 
-            return destinationPath;
+            return destinationPath.Replace(Directory.GetCurrentDirectory() + @"/wwwroot", "");
         }
 
         public static string DeleteAsync(string sourcePath)
@@ -70,12 +71,12 @@ namespace Core.Utilities.WebAPI
             return null;
         }
 
-        public static string newPath(IFormFile file)
+        private static string newPath(IFormFile file)
         {
             FileInfo fileName = new FileInfo(file.FileName);
             var fileExtension = fileName.Extension;
             var uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
-            string path = Directory.GetCurrentDirectory() + @"/wwwroot/Images/";
+            string path = Directory.GetCurrentDirectory() + @"/wwwroot/Images/UserImages/";
             string result = path + uniqueFileName;
 
             return result;

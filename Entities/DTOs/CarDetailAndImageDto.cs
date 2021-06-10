@@ -19,7 +19,6 @@ namespace Entities.DTOs
         public string ModelYear { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
-        //public List<DateTime> ImageDate { get; set; }
         public List<string> ImagePath { get; set; }
     }
 }
